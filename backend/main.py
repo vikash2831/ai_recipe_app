@@ -5,9 +5,12 @@ import groq
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-# Load API key from .env
-load_dotenv()
+# Load API key from .env inside backend folder
+load_dotenv(dotenv_path="./backend/.env")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+if not GROQ_API_KEY:
+    raise ValueError("❌ GROQ_API_KEY is missing. Please check your environment variables.")
 
 client = groq.Client(api_key=GROQ_API_KEY)
 
@@ -20,6 +23,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ✅ Fix "404 Not Found" error
+@app.get("/")
+def read_root():
+    return {"message": "✅ AI Recipe Generator API is running!"}
 
 class RecipeRequest(BaseModel):
     ingredients: list
