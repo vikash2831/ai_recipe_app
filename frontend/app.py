@@ -118,7 +118,7 @@ ingredients = st.text_area("",placeholder= "Eg :Chicken,Rice,Egg")
 
 # Generate Button
 if st.button("SEARCH🔍"):
-    response = requests.post("http://127.0.0.1:8000/generate_recipe/", json={"ingredients": ingredients.split(",")})
+    response = requests.post("https://ai-recipe-app-1.onrender.com/generate_recipe/", json={"ingredients": ingredients.split(",")})
     
     if response.status_code == 200:
         recipe_text = response.json()["recipe"]
