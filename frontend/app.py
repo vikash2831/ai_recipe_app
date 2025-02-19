@@ -8,7 +8,7 @@ def get_base64_image(image_path):
         return base64.b64encode(image_file.read()).decode()
 
 # Load the background image
-bg_image = get_base64_image("food-background.jpg")  # Use your actual image file name
+bg_image = get_base64_image("frontend/food-background.jpg")  # Use your actual image file name
 
 # Custom CSS for Full-Screen Background, Bold Fonts, and UI Styling
 st.markdown(f"""
