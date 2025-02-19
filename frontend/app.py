@@ -131,3 +131,4 @@ if st.button("SEARCH🔍"):
 
 # Close the wrapper div
 st.markdown('</div>', unsafe_allow_html=True)
+
